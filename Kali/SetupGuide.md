@@ -131,3 +131,93 @@ sudo apt update
 ```bash
 sudo apt full-upgrade -y
 ```
+*This updates all installed packages to their latest versions*
+
+#### 3. Install Basic Kali Defaults and Root Login
+```bash
+sudo apt install kali-defaults kali-root-login -y
+```
+*Installs Kali's default configurations and enables root user login*
+
+#### 4. Install Standard Kali Package
+```bash
+sudo apt install kali-linux-default -y
+```
+*Installs the standard collection of Kali Linux tools and utilities*
+
+#### 5. Install Top 10 Security Tools
+```bash
+sudo apt install kali-tools-top10 -y
+```
+*Installs the most commonly used penetration testing tools*
+
+#### 6. Enable SSH Service
+```bash
+sudo systemctl enable ssh
+```
+*Enables SSH so you can remotely connect to this machine*
+
+---
+
+## 🔐 Tailscale Configuration
+
+Tailscale creates a secure private network between your devices. You can either set it up manually or use an authentication token for automated setup.
+
+### Method 1: Manual Setup
+After installing Tailscale, authenticate manually:
+
+1. **Start Tailscale**:
+   ```bash
+   sudo tailscale up
+   ```
+
+2. **Follow the authentication link** that appears in the terminal
+3. **Sign in** to your Tailscale account in your web browser
+4. **Authorize the device** when prompted
+
+### Method 2: Automated Setup with Auth Token (Recommended)
+
+#### How to Generate an Auth Token:
+
+1. **Log in to Tailscale Admin Console**:
+   - Go to: https://login.tailscale.com/admin/settings/keys
+   - Sign in with your Tailscale account
+
+2. **Generate Auth Key**:
+   - Click **"Generate auth key"**
+   - **Settings to configure**:
+     - ✅ **Reusable**: Check this if you plan to use it on multiple devices
+     - ✅ **Ephemeral**: Check this for temporary devices (optional)
+     - ⏱️ **Expiry**: Set expiration time (default is 90 days)
+     - 🏷️ **Tags**: Add device tags if needed (optional)
+
+3. **Copy the Auth Key**:
+   - Copy the generated key (starts with `tskey-auth-`)
+   - **Store it securely** - it won't be shown again
+
+#### Using the Auth Token:
+
+Replace `YOUR_AUTH_TOKEN_HERE` with your actual token:
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=YOUR_AUTH_TOKEN_HERE
+```
+
+**Example** (⚠️ This token is example only):
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-kdtTw8Vpoo11CNTRL-UesqkEzczsbCPpS4hxTKqb4EQnUu1TjW
+```
+
+### Verify Tailscale Connection
+
+After setup, verify Tailscale is working:
+
+```bash
+sudo tailscale status
+```
+
+You should see your device listed with an IP address (usually starts with `100.x.x.x`).
+
+---
+
+*Guide created for TarbhTech - Internal Use Only*
