@@ -205,7 +205,7 @@ curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key
 
 **Example** (⚠️ This token is example only):
 ```bash
-curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-kdtTw8Vpoo11CNTRL-UesqkEzczsbCPpS4hxTKqb4EQnUu1TjW
+curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-kdtTw8Vpoo11CNTRL-UesqkEzczsbCPpS4hxTKqb4EQnUu1
 ```
 
 ### Verify Tailscale Connection
